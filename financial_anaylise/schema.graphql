@@ -1,0 +1,788 @@
+schema {
+  query: query_root
+  subscription: subscription_root
+}
+
+# columns and relationships of "api_coacodemapping"
+type api_coacodemapping {
+  chs: String!
+  code: String!
+  eng: String!
+  id: Int!
+}
+
+# Boolean expression to filter rows from the table "api_coacodemapping". All fields are combined with a logical 'AND'.
+input api_coacodemapping_bool_exp {
+  _and: [api_coacodemapping_bool_exp]
+  _not: api_coacodemapping_bool_exp
+  _or: [api_coacodemapping_bool_exp]
+  chs: varchar_comparison_exp
+  code: varchar_comparison_exp
+  eng: varchar_comparison_exp
+  id: integer_comparison_exp
+}
+
+# ordering options when selecting data from "api_coacodemapping"
+input api_coacodemapping_order_by {
+  chs: order_by
+  code: order_by
+  eng: order_by
+  id: order_by
+}
+
+# select columns of table "api_coacodemapping"
+enum api_coacodemapping_select_column {
+  # column name
+  chs
+  # column name
+  code
+  # column name
+  eng
+  # column name
+  id
+}
+
+# columns and relationships of "api_financialratiocodemapping"
+type api_financialratiocodemapping {
+  chs: String!
+  chs_desc: String
+  code: String!
+  eng: String!
+  eng_desc: String
+  id: Int!
+}
+
+# Boolean expression to filter rows from the table
+# "api_financialratiocodemapping". All fields are combined with a logical 'AND'.
+input api_financialratiocodemapping_bool_exp {
+  _and: [api_financialratiocodemapping_bool_exp]
+  _not: api_financialratiocodemapping_bool_exp
+  _or: [api_financialratiocodemapping_bool_exp]
+  chs: varchar_comparison_exp
+  chs_desc: varchar_comparison_exp
+  code: varchar_comparison_exp
+  eng: varchar_comparison_exp
+  eng_desc: varchar_comparison_exp
+  id: integer_comparison_exp
+}
+
+# ordering options when selecting data from "api_financialratiocodemapping"
+input api_financialratiocodemapping_order_by {
+  chs: order_by
+  chs_desc: order_by
+  code: order_by
+  eng: order_by
+  eng_desc: order_by
+  id: order_by
+}
+
+# select columns of table "api_financialratiocodemapping"
+enum api_financialratiocodemapping_select_column {
+  # column name
+  chs
+  # column name
+  chs_desc
+  # column name
+  code
+  # column name
+  eng
+  # column name
+  eng_desc
+  # column name
+  id
+}
+
+# columns and relationships of "api_latestcloseprice"
+type api_latestcloseprice {
+  close: float8!
+  code_id: String!
+  date: date!
+}
+
+# Boolean expression to filter rows from the table "api_latestcloseprice". All fields are combined with a logical 'AND'.
+input api_latestcloseprice_bool_exp {
+  _and: [api_latestcloseprice_bool_exp]
+  _not: api_latestcloseprice_bool_exp
+  _or: [api_latestcloseprice_bool_exp]
+  close: float8_comparison_exp
+  code_id: varchar_comparison_exp
+  date: date_comparison_exp
+}
+
+# ordering options when selecting data from "api_latestcloseprice"
+input api_latestcloseprice_order_by {
+  close: order_by
+  code_id: order_by
+  date: order_by
+}
+
+# select columns of table "api_latestcloseprice"
+enum api_latestcloseprice_select_column {
+  # column name
+  close
+  # column name
+  code_id
+  # column name
+  date
+}
+
+# columns and relationships of "api_latestdividend"
+type api_latestdividend {
+  code_id: String!
+  currency: String!
+  div_type: String!
+  dividend_yield: float8
+  id: Int!
+  # An object relationship
+  industry: api_stock!
+  # An object relationship
+  latest_price: api_latestcloseprice
+  total_div_amount: float8!
+  total_div_amount_in_aud: float8!
+}
+
+# Boolean expression to filter rows from the table "api_latestdividend". All fields are combined with a logical 'AND'.
+input api_latestdividend_bool_exp {
+  _and: [api_latestdividend_bool_exp]
+  _not: api_latestdividend_bool_exp
+  _or: [api_latestdividend_bool_exp]
+  code_id: varchar_comparison_exp
+  currency: varchar_comparison_exp
+  div_type: varchar_comparison_exp
+  dividend_yield: float8_comparison_exp
+  id: integer_comparison_exp
+  industry: api_stock_bool_exp
+  latest_price: api_latestcloseprice_bool_exp
+  total_div_amount: float8_comparison_exp
+  total_div_amount_in_aud: float8_comparison_exp
+}
+
+# ordering options when selecting data from "api_latestdividend"
+input api_latestdividend_order_by {
+  code_id: order_by
+  currency: order_by
+  div_type: order_by
+  dividend_yield: order_by
+  id: order_by
+  industry: api_stock_order_by
+  latest_price: api_latestcloseprice_order_by
+  total_div_amount: order_by
+  total_div_amount_in_aud: order_by
+}
+
+# select columns of table "api_latestdividend"
+enum api_latestdividend_select_column {
+  # column name
+  code_id
+  # column name
+  currency
+  # column name
+  div_type
+  # column name
+  dividend_yield
+  # column name
+  id
+  # column name
+  total_div_amount
+  # column name
+  total_div_amount_in_aud
+}
+
+# columns and relationships of "api_stock"
+type api_stock {
+  code: String!
+  industry_chs: String!
+  industry_eng: String!
+  is_bio: Boolean!
+  is_cannabis: Boolean!
+  is_china_content: Boolean!
+  is_food_beverage: Boolean!
+  is_gold_mining: Boolean!
+  is_hot: Boolean!
+  is_index: Boolean!
+  is_lithium_cobalt: Boolean!
+  is_new: Boolean!
+  is_resources: Boolean!
+  is_tech: Boolean!
+  name_chs: String!
+  name_eng: String!
+  pub_date: date
+  summary_chs: String!
+  summary_eng: String!
+  tag_chs: String
+  tag_eng: String
+  website: String
+}
+
+# Boolean expression to filter rows from the table "api_stock". All fields are combined with a logical 'AND'.
+input api_stock_bool_exp {
+  _and: [api_stock_bool_exp]
+  _not: api_stock_bool_exp
+  _or: [api_stock_bool_exp]
+  code: varchar_comparison_exp
+  industry_chs: varchar_comparison_exp
+  industry_eng: varchar_comparison_exp
+  is_bio: boolean_comparison_exp
+  is_cannabis: boolean_comparison_exp
+  is_china_content: boolean_comparison_exp
+  is_food_beverage: boolean_comparison_exp
+  is_gold_mining: boolean_comparison_exp
+  is_hot: boolean_comparison_exp
+  is_index: boolean_comparison_exp
+  is_lithium_cobalt: boolean_comparison_exp
+  is_new: boolean_comparison_exp
+  is_resources: boolean_comparison_exp
+  is_tech: boolean_comparison_exp
+  name_chs: varchar_comparison_exp
+  name_eng: varchar_comparison_exp
+  pub_date: date_comparison_exp
+  summary_chs: text_comparison_exp
+  summary_eng: text_comparison_exp
+  tag_chs: varchar_comparison_exp
+  tag_eng: varchar_comparison_exp
+  website: varchar_comparison_exp
+}
+
+# ordering options when selecting data from "api_stock"
+input api_stock_order_by {
+  code: order_by
+  industry_chs: order_by
+  industry_eng: order_by
+  is_bio: order_by
+  is_cannabis: order_by
+  is_china_content: order_by
+  is_food_beverage: order_by
+  is_gold_mining: order_by
+  is_hot: order_by
+  is_index: order_by
+  is_lithium_cobalt: order_by
+  is_new: order_by
+  is_resources: order_by
+  is_tech: order_by
+  name_chs: order_by
+  name_eng: order_by
+  pub_date: order_by
+  summary_chs: order_by
+  summary_eng: order_by
+  tag_chs: order_by
+  tag_eng: order_by
+  website: order_by
+}
+
+# select columns of table "api_stock"
+enum api_stock_select_column {
+  # column name
+  code
+  # column name
+  industry_chs
+  # column name
+  industry_eng
+  # column name
+  is_bio
+  # column name
+  is_cannabis
+  # column name
+  is_china_content
+  # column name
+  is_food_beverage
+  # column name
+  is_gold_mining
+  # column name
+  is_hot
+  # column name
+  is_index
+  # column name
+  is_lithium_cobalt
+  # column name
+  is_new
+  # column name
+  is_resources
+  # column name
+  is_tech
+  # column name
+  name_chs
+  # column name
+  name_eng
+  # column name
+  pub_date
+  # column name
+  summary_chs
+  # column name
+  summary_eng
+  # column name
+  tag_chs
+  # column name
+  tag_eng
+  # column name
+  website
+}
+
+# columns and relationships of "api_stockpricehistory"
+type api_stockpricehistory {
+  close: float8
+  code_id: String!
+  date: date!
+  high: float8
+  id: Int!
+  low: float8
+  open: float8
+  valueTraded: float8
+  volume: float8
+}
+
+# Boolean expression to filter rows from the table "api_stockpricehistory". All fields are combined with a logical 'AND'.
+input api_stockpricehistory_bool_exp {
+  _and: [api_stockpricehistory_bool_exp]
+  _not: api_stockpricehistory_bool_exp
+  _or: [api_stockpricehistory_bool_exp]
+  close: float8_comparison_exp
+  code_id: varchar_comparison_exp
+  date: date_comparison_exp
+  high: float8_comparison_exp
+  id: integer_comparison_exp
+  low: float8_comparison_exp
+  open: float8_comparison_exp
+  valueTraded: float8_comparison_exp
+  volume: float8_comparison_exp
+}
+
+# ordering options when selecting data from "api_stockpricehistory"
+input api_stockpricehistory_order_by {
+  close: order_by
+  code_id: order_by
+  date: order_by
+  high: order_by
+  id: order_by
+  low: order_by
+  open: order_by
+  valueTraded: order_by
+  volume: order_by
+}
+
+# select columns of table "api_stockpricehistory"
+enum api_stockpricehistory_select_column {
+  # column name
+  close
+  # column name
+  code_id
+  # column name
+  date
+  # column name
+  high
+  # column name
+  id
+  # column name
+  low
+  # column name
+  open
+  # column name
+  valueTraded
+  # column name
+  volume
+}
+
+# columns and relationships of "api_translationcode"
+type api_translationcode {
+  code: String!
+  status: Int!
+}
+
+# Boolean expression to filter rows from the table "api_translationcode". All fields are combined with a logical 'AND'.
+input api_translationcode_bool_exp {
+  _and: [api_translationcode_bool_exp]
+  _not: api_translationcode_bool_exp
+  _or: [api_translationcode_bool_exp]
+  code: varchar_comparison_exp
+  status: integer_comparison_exp
+}
+
+# ordering options when selecting data from "api_translationcode"
+input api_translationcode_order_by {
+  code: order_by
+  status: order_by
+}
+
+# select columns of table "api_translationcode"
+enum api_translationcode_select_column {
+  # column name
+  code
+  # column name
+  status
+}
+
+# expression to compare columns of type boolean. All fields are combined with logical 'AND'.
+input boolean_comparison_exp {
+  _eq: Boolean
+  _gt: Boolean
+  _gte: Boolean
+  _in: [Boolean]
+  _is_null: Boolean
+  _lt: Boolean
+  _lte: Boolean
+  _neq: Boolean
+  _nin: [Boolean]
+}
+
+scalar date
+
+# expression to compare columns of type date. All fields are combined with logical 'AND'.
+input date_comparison_exp {
+  _eq: date
+  _gt: date
+  _gte: date
+  _in: [date]
+  _is_null: Boolean
+  _lt: date
+  _lte: date
+  _neq: date
+  _nin: [date]
+}
+
+type Financial {
+  # stock code e.g. ANZ
+  code: String!
+  # the currency in report
+  currency: String!
+  # the time when it is downloaded
+  datetime: String!
+  # different industry type has different json_item
+  industryType: String!
+  # contains BAL(balance sheet)/INC(income statement)/CAS statements over the past few years
+  report: String!
+  # the financial report type: annual/interim
+  reportType: String!
+}
+
+type FinancialRatio {
+  # stock code e.g. ANZ
+  code: String!
+  # the currency in report
+  currency: String!
+  # report date
+  date: String!
+  ratioReport: String!
+}
+
+scalar float8
+
+# expression to compare columns of type float8. All fields are combined with logical 'AND'.
+input float8_comparison_exp {
+  _eq: float8
+  _gt: float8
+  _gte: float8
+  _in: [float8]
+  _is_null: Boolean
+  _lt: float8
+  _lte: float8
+  _neq: float8
+  _nin: [float8]
+}
+
+# expression to compare columns of type integer. All fields are combined with logical 'AND'.
+input integer_comparison_exp {
+  _eq: Int
+  _gt: Int
+  _gte: Int
+  _in: [Int]
+  _is_null: Boolean
+  _lt: Int
+  _lte: Int
+  _neq: Int
+  _nin: [Int]
+}
+
+# column ordering options
+enum order_by {
+  # in the ascending order, nulls last
+  asc
+  # in the ascending order, nulls first
+  asc_nulls_first
+  # in the ascending order, nulls last
+  asc_nulls_last
+  # in the descending order, nulls first
+  desc
+  # in the descending order, nulls first
+  desc_nulls_first
+  # in the descending order, nulls last
+  desc_nulls_last
+}
+
+type Query {
+  getFinancial(
+    # stock code e.g. ANZ
+    code: String!
+    # annual/interim
+    reportType: String!
+  ): Financial
+  getFinancialRatio(
+    # stock code e.g. ANZ
+    code: String!
+  ): FinancialRatio
+}
+
+# query root
+type query_root {
+  # fetch data from the table: "api_coacodemapping"
+  api_coacodemapping(
+    # distinct select on columns
+    distinct_on: [api_coacodemapping_select_column!]
+    # limit the nuber of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [api_coacodemapping_order_by!]
+    # filter the rows returned
+    where: api_coacodemapping_bool_exp
+  ): [api_coacodemapping!]!
+  # fetch data from the table: "api_coacodemapping" using primary key columns
+  api_coacodemapping_by_pk(id: Int!): api_coacodemapping
+  # fetch data from the table: "api_financialratiocodemapping"
+  api_financialratiocodemapping(
+    # distinct select on columns
+    distinct_on: [api_financialratiocodemapping_select_column!]
+    # limit the nuber of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [api_financialratiocodemapping_order_by!]
+    # filter the rows returned
+    where: api_financialratiocodemapping_bool_exp
+  ): [api_financialratiocodemapping!]!
+  # fetch data from the table: "api_financialratiocodemapping" using primary key columns
+  api_financialratiocodemapping_by_pk(id: Int!): api_financialratiocodemapping
+  # fetch data from the table: "api_latestcloseprice"
+  api_latestcloseprice(
+    # distinct select on columns
+    distinct_on: [api_latestcloseprice_select_column!]
+    # limit the nuber of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [api_latestcloseprice_order_by!]
+    # filter the rows returned
+    where: api_latestcloseprice_bool_exp
+  ): [api_latestcloseprice!]!
+  # fetch data from the table: "api_latestcloseprice" using primary key columns
+  api_latestcloseprice_by_pk(id: Int!): api_latestcloseprice
+  # fetch data from the table: "api_latestdividend"
+  api_latestdividend(
+    # distinct select on columns
+    distinct_on: [api_latestdividend_select_column!]
+    # limit the nuber of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [api_latestdividend_order_by!]
+    # filter the rows returned
+    where: api_latestdividend_bool_exp
+  ): [api_latestdividend!]!
+  # fetch data from the table: "api_latestdividend" using primary key columns
+  api_latestdividend_by_pk(id: Int!): api_latestdividend
+  # fetch data from the table: "api_stock"
+  api_stock(
+    # distinct select on columns
+    distinct_on: [api_stock_select_column!]
+    # limit the nuber of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [api_stock_order_by!]
+    # filter the rows returned
+    where: api_stock_bool_exp
+  ): [api_stock!]!
+  # fetch data from the table: "api_stock" using primary key columns
+  api_stock_by_pk(code: String!): api_stock
+  # fetch data from the table: "api_stockpricehistory"
+  api_stockpricehistory(
+    # distinct select on columns
+    distinct_on: [api_stockpricehistory_select_column!]
+    # limit the nuber of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [api_stockpricehistory_order_by!]
+    # filter the rows returned
+    where: api_stockpricehistory_bool_exp
+  ): [api_stockpricehistory!]!
+  # fetch data from the table: "api_stockpricehistory" using primary key columns
+  api_stockpricehistory_by_pk(id: Int!): api_stockpricehistory
+  # fetch data from the table: "api_translationcode"
+  api_translationcode(
+    # distinct select on columns
+    distinct_on: [api_translationcode_select_column!]
+    # limit the nuber of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [api_translationcode_order_by!]
+    # filter the rows returned
+    where: api_translationcode_bool_exp
+  ): [api_translationcode!]!
+  # fetch data from the table: "api_translationcode" using primary key columns
+  api_translationcode_by_pk(id: Int!): api_translationcode
+  getFinancial(
+    # stock code e.g. ANZ
+    code: String!
+    # annual/interim
+    reportType: String!
+  ): Financial
+  getFinancialRatio(
+    # stock code e.g. ANZ
+    code: String!
+  ): FinancialRatio
+}
+
+# subscription root
+type subscription_root {
+  # fetch data from the table: "api_coacodemapping"
+  api_coacodemapping(
+    # distinct select on columns
+    distinct_on: [api_coacodemapping_select_column!]
+    # limit the nuber of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [api_coacodemapping_order_by!]
+    # filter the rows returned
+    where: api_coacodemapping_bool_exp
+  ): [api_coacodemapping!]!
+  # fetch data from the table: "api_coacodemapping" using primary key columns
+  api_coacodemapping_by_pk(id: Int!): api_coacodemapping
+  # fetch data from the table: "api_financialratiocodemapping"
+  api_financialratiocodemapping(
+    # distinct select on columns
+    distinct_on: [api_financialratiocodemapping_select_column!]
+    # limit the nuber of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [api_financialratiocodemapping_order_by!]
+    # filter the rows returned
+    where: api_financialratiocodemapping_bool_exp
+  ): [api_financialratiocodemapping!]!
+  # fetch data from the table: "api_financialratiocodemapping" using primary key columns
+  api_financialratiocodemapping_by_pk(id: Int!): api_financialratiocodemapping
+  # fetch data from the table: "api_latestcloseprice"
+  api_latestcloseprice(
+    # distinct select on columns
+    distinct_on: [api_latestcloseprice_select_column!]
+    # limit the nuber of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [api_latestcloseprice_order_by!]
+    # filter the rows returned
+    where: api_latestcloseprice_bool_exp
+  ): [api_latestcloseprice!]!
+  # fetch data from the table: "api_latestcloseprice" using primary key columns
+  api_latestcloseprice_by_pk(id: Int!): api_latestcloseprice
+  # fetch data from the table: "api_latestdividend"
+  api_latestdividend(
+    # distinct select on columns
+    distinct_on: [api_latestdividend_select_column!]
+    # limit the nuber of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [api_latestdividend_order_by!]
+    # filter the rows returned
+    where: api_latestdividend_bool_exp
+  ): [api_latestdividend!]!
+  # fetch data from the table: "api_latestdividend" using primary key columns
+  api_latestdividend_by_pk(id: Int!): api_latestdividend
+  # fetch data from the table: "api_stock"
+  api_stock(
+    # distinct select on columns
+    distinct_on: [api_stock_select_column!]
+    # limit the nuber of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [api_stock_order_by!]
+    # filter the rows returned
+    where: api_stock_bool_exp
+  ): [api_stock!]!
+  # fetch data from the table: "api_stock" using primary key columns
+  api_stock_by_pk(code: String!): api_stock
+  # fetch data from the table: "api_stockpricehistory"
+  api_stockpricehistory(
+    # distinct select on columns
+    distinct_on: [api_stockpricehistory_select_column!]
+    # limit the nuber of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [api_stockpricehistory_order_by!]
+    # filter the rows returned
+    where: api_stockpricehistory_bool_exp
+  ): [api_stockpricehistory!]!
+  # fetch data from the table: "api_stockpricehistory" using primary key columns
+  api_stockpricehistory_by_pk(id: Int!): api_stockpricehistory
+  # fetch data from the table: "api_translationcode"
+  api_translationcode(
+    # distinct select on columns
+    distinct_on: [api_translationcode_select_column!]
+    # limit the nuber of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [api_translationcode_order_by!]
+    # filter the rows returned
+    where: api_translationcode_bool_exp
+  ): [api_translationcode!]!
+  # fetch data from the table: "api_translationcode" using primary key columns
+  api_translationcode_by_pk(id: Int!): api_translationcode
+}
+
+# expression to compare columns of type text. All fields are combined with logical 'AND'.
+input text_comparison_exp {
+  _eq: String
+  _gt: String
+  _gte: String
+  _ilike: String
+  _in: [String]
+  _is_null: Boolean
+  _like: String
+  _lt: String
+  _lte: String
+  _neq: String
+  _nilike: String
+  _nin: [String]
+  _nlike: String
+  _nsimilar: String
+  _similar: String
+}
+
+# expression to compare columns of type varchar. All fields are combined with logical 'AND'.
+input varchar_comparison_exp {
+  _eq: String
+  _gt: String
+  _gte: String
+  _ilike: String
+  _in: [String]
+  _is_null: Boolean
+  _like: String
+  _lt: String
+  _lte: String
+  _neq: String
+  _nilike: String
+  _nin: [String]
+  _nlike: String
+  _nsimilar: String
+  _similar: String
+}
+
