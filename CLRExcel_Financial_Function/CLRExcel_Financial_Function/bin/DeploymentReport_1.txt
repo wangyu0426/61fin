@@ -1,0 +1,23 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [CLRExcel_Financial_Functions] (Assembly)
+       [dbo].[DDB] (Function)
+       [dbo].[FV] (Function)
+       [dbo].[IPMT] (Function)
+       [dbo].[PPMT] (Function)
+       [dbo].[PV] (Function)
+       [dbo].[Rate] (Function)
+       [dbo].[SLN] (Function)
+       [dbo].[SYD] (Function)
+
+** Supporting actions
